@@ -1,0 +1,106 @@
+# DATR Configuration
+# Diachronic-Aware Temporal Retrieval
+
+# Paths
+data:
+  raw_dir: "data/raw"
+  processed_dir: "data/processed"
+  cache_dir: "data/cache"
+  corpus_path: "data/processed/corpus.jsonl"
+  
+# Dataset
+dataset:
+  name: "Bhawna/ChroniclingAmericaQA"
+  train_file: "train.json"
+  dev_file: "dev.json"
+  test_file: "test.json"
+
+# Era configuration (decades from 1800-1920)
+eras:
+  granularity: "decade"  # Options: "decade", "20year", "custom"
+  bins:
+    - name: "1800s"
+      start: 1800
+      end: 1809
+    - name: "1810s"
+      start: 1810
+      end: 1819
+    - name: "1820s"
+      start: 1820
+      end: 1829
+    - name: "1830s"
+      start: 1830
+      end: 1839
+    - name: "1840s"
+      start: 1840
+      end: 1849
+    - name: "1850s"
+      start: 1850
+      end: 1859
+    - name: "1860s"
+      start: 1860
+      end: 1869
+    - name: "1870s"
+      start: 1870
+      end: 1879
+    - name: "1880s"
+      start: 1880
+      end: 1889
+    - name: "1890s"
+      start: 1890
+      end: 1899
+    - name: "1900s"
+      start: 1900
+      end: 1909
+    - name: "1910s"
+      start: 1910
+      end: 1920
+
+# Model configuration
+model:
+  encoder_name: "bert-base-uncased"  # Base encoder
+  hidden_size: 768
+  era_embedding_dim: 64
+  pooling: "cls"  # Options: "cls", "mean"
+  normalize_embeddings: true
+
+# Training configuration
+training:
+  batch_size: 8
+  eval_batch_size: 32
+  learning_rate: 2.0e-5
+  weight_decay: 0.01
+  warmup_ratio: 0.1
+  num_epochs: 3
+  max_seq_length: 256
+  gradient_accumulation_steps: 4
+  fp16: true
+  
+  # Hard negatives
+  num_hard_negatives: 7
+  num_bm25_negatives: 3
+  num_in_batch_negatives: 4
+  
+  # Diachronic alignment
+  diachronic_loss_weight: 0.3  # Lambda in combined loss
+  
+  # Checkpointing
+  save_steps: 1000
+  eval_steps: 500
+  logging_steps: 100
+
+# Evaluation configuration  
+evaluation:
+  ks: [1, 5, 10, 20, 100]  # Recall@K values
+  
+# Paraphrase generation (for modern queries)
+paraphrase:
+  model: "Qwen/Qwen2.5-14B-Instruct"
+  batch_size: 20
+  max_retries: 3
+  temperature: 0.0   # greedy / deterministic
+
+# Hardware
+hardware:
+  device: "cuda"
+  seed: 42

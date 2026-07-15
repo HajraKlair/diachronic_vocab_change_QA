@@ -1,0 +1,15 @@
+# Core
+torch
+transformers>=4.44
+accelerate
+peft==0.19.1          # version the QLoRA reader adapter was saved with
+bitsandbytes          # 4-bit loading for the LLM reader
+numpy
+scipy
+tqdm
+PyYAML                # config loading
+
+# Retrieval
+bm25s
+PyStemmer             # stemmed BM25 index used by hybrid_eval
+faiss-cpu             # (or faiss-gpu) for dense ANN search

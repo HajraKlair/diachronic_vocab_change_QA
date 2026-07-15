@@ -1,0 +1,21 @@
+Diachronic Modern Queries for ChroniclingAmericaQA
+Copyright (c) 2026 The Authors
+
+This dataset (the `modern_query` rewrites and the packaged files in this folder)
+is licensed under the Creative Commons Attribution 4.0 International License
+(CC BY 4.0).
+
+You are free to share and adapt the material for any purpose, even commercially,
+provided you give appropriate credit, link to the license, and indicate if changes
+were made.
+
+Full legal text: https://creativecommons.org/licenses/by/4.0/legalcode
+Human-readable summary: https://creativecommons.org/licenses/by/4.0/
+
+Attribution: please cite the accompanying paper (see README.md) and the source
+benchmark, ChroniclingAmericaQA (Piryani et al., SIGIR 2024).
+
+NOTE: The underlying questions, answers, and newspaper passages are derived from
+ChroniclingAmericaQA and remain subject to that dataset's license (CC BY 4.0).
+This license applies to the modern-query rewrites and packaging contributed here.
+
